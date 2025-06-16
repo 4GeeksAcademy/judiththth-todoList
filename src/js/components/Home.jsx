@@ -1,26 +1,25 @@
 import React from "react";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+
 
 //create your first component
 const Home = () => {
+
+	const [key, setKey] = useState("");
+
+	const handleKeyDown = (event) => {
+		setKey(event.key);
+	};
+
+	//listaTareas.map((item)=><li>{item}</li>)
+
 	return (
 		<div className="text-center">
-            
+			<h1>To-Do List</h1>
+			<input className="task" onKeyDown={(event) => setEnter(event.target.value)} placeholder="Write your task"></input>
+			<ul>
 
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+			</ul>
 		</div>
 	);
 };
