@@ -12,7 +12,6 @@ const Home = () => {
 	function addTask(event) {
 
 		if (event.keyCode === 13) {
-			console.log("Enter funciona");
 			// cuando se hace enter, se añade la tarea a una lista
 			let updatedList = list.concat(task)
 			setList(updatedList)
@@ -20,17 +19,16 @@ const Home = () => {
 		}
 	}
 
-	console.log(task);
-
-	//listaTareas.map((item)=><li>{item}</li>)
-
 	return (
 		<div className="text-center">
 			<h1>To-Do List</h1>
 			<input className="task" onChange={(event) => setTask(event.target.value)} onKeyDown={addTask} value={task} placeholder="Write your task"></input>
-			<ul>{list}
-							
-			</ul>
+			<div>
+				<ul>{list.map((item, index) => (
+					<li key={index}>{item}<button className="btn" onClick={() => setList(list.filter((_, i) => i !== index))}>X</button></li>
+				))}
+				</ul>
+			</div>
 		</div>
 	);
 };
